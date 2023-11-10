@@ -1,0 +1,33 @@
+* {
+    
+}
+
+:root {
+    --dark-purple: #4f235b;
+    --light-purple: #c69dd2
+}
+
+body {
+    margin: 0px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 20vh 1fr auto;
+}
+
+header {
+    background: url(./images/bookshelf-bg.png);
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    background-color: var(--light-purple);
+}
+
+footer {
+    background-color: var(--dark-purple);
+    color: white;
+    display: grid;
+    place-content: center;
+    padding: 4rem;
+}
