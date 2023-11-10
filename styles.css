@@ -4,7 +4,8 @@
 
 :root {
     --dark-purple: #4f235b;
-    --light-purple: #c69dd2
+    --light-purple: #c69dd2;
+    --medium-purple: #8d1d75;
 }
 
 body {
@@ -16,18 +17,39 @@ body {
 
 header {
     background: url(./images/bookshelf-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 main {
     background-color: var(--light-purple);
+    padding: 2rem 4rem;
+    
 }
 
-footer {
-    background-color: var(--dark-purple);
+.add-content.bottom {
+    height: 10vh;
+    border: solid 2px var(--dark-purple);
+    width: 100%;
+    border-radius: 16px;
+    background: none;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.quote {
+    background-color: var(--medium-purple);
     color: white;
     display: grid;
     place-content: center;
     padding: 4rem;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--dark-purple);
+    height: 2rem;
 }
