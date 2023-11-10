@@ -6,6 +6,7 @@
     --dark-purple: #4f235b;
     --light-purple: #c69dd2;
     --medium-purple: #8d1d75;
+    --darker-purple: rgb(10, 10, 20);
 }
 
 h1, h2, h3, h4, p {
@@ -17,10 +18,13 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: 20vh 1fr auto;
+    font-family: Roboto;
 }
 
 header {
     background: url(./images/bookshelf-bg.png);
+    background: none;
+    background-color: var(--darker-purple);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -30,19 +34,22 @@ header {
 
 main {
     background-color: var(--light-purple);
+    background-color: rgb(10, 10, 20);
     padding: 3vw;
     display: grid;
     gap: 20px
 }
 
 .book {
-    background-color: var(--dark-purple);
     box-shadow: black 4px 3px 9px;
+    box-shadow: black 4px 
     border-radius: 6px;
     height: 7rem;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    color: white;
+    border: solid 2px var(--dark-purple);
     
 }
 
@@ -68,13 +75,18 @@ main {
 
 .title {
     align-self: flex-end;
+    border-bottom: 2px double var(--light-purple);
     text-align: center;
+    width: fit-content;
+    justify-self: center;
 }
 
 .author {
     text-align: center;
-    align-self:flex-start;
-    justify-content: center;
+    align-self: flex-start;
+    justify-self: center;
+    width: fit-content;
+    border-radius: 16px;
 }
 
 .add-content.bottom {
