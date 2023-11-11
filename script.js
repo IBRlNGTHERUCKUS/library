@@ -34,11 +34,28 @@ const bookList = {
         else {
             bookRead.setAttribute('src', './images/icons/book-open.svg');
         }
-        bookRead.addEventListener('mouseover', ()=> {bookRead.setAttribute('src', './images/icons/book-open-gn.svg')})
-        bookRead.addEventListener('mouseout', ()=> {bookRead.setAttribute('src', './images/icons/book-open.svg')});
+        // Icon hover behavior
+        bookRead.addEventListener('mouseover', ()=> {
+            if (book.read) {
+                bookRead.setAttribute('src', './images/icons/book-open.svg')
+            }
+            else {
+                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg')
+            }
+        })
+        bookRead.addEventListener('mouseout', ()=> {
+            if (book.read) {
+                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg')
+            }
+            else {
+                bookRead.setAttribute('src', './images/icons/book-open.svg')
+            }
+        });
         bookRead.addEventListener('click', (e)=> {
+            if (!book.read) {
+                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg');
+            }
             this.books[e.target.parentNode.dataset.index].toggleRead();
-            e.target.setAttribute('src', './images/icons/check-bold-gn.svg');
         })
         
         let bookDelete = document.createElement('input');
@@ -49,18 +66,14 @@ const bookList = {
         bookDelete.addEventListener('mouseout', ()=> {bookDelete.setAttribute('src', './images/icons/delete-outline.svg')})
         bookDelete.addEventListener('click', (e)=>{
             this.books.splice(e.target.parentNode.dataset.index, 1);
-            alert("Are you sure?");
             this.clearBooks();
             this.renderBooks();
-            // e.target.parentNode.parentNode.removeChild(e.target.parentNode);
         })
 
         bookDiv.append(bookTitle, bookAuthor, bookRead, bookDelete);
         bookContainer.appendChild(bookDiv);
         }
-        console.log(this);
-    }
-    
+    } 
 }
 
 
