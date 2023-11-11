@@ -40,27 +40,34 @@ main {
     gap: 20px
 }
 
+.book-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .book {
     box-shadow: black 4px 3px 9px;
-    box-shadow: black 4px 
     border-radius: 6px;
-    height: 7rem;
+    padding: 32px 3vw;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    row-gap: 10px;
     color: white;
     border: solid 2px var(--dark-purple);
+    border-left: solid 60px var(--medium-purple);
     
 }
 
-.button-box {
+/* .button-box {
     grid-row: 1/3;
     grid-column: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     gap: 10px;
-    background-color: var(--medium-purple);
+    
     padding: 10px
 }
 
@@ -69,8 +76,7 @@ main {
     flex: 1;
     border-radius: 6px;
     border: none;
-}
-
+} */
 
 
 .title {
@@ -81,12 +87,19 @@ main {
     justify-self: center;
 }
 
-.author {
+.author { 
     text-align: center;
     align-self: flex-start;
     justify-self: center;
     width: fit-content;
     border-radius: 16px;
+    grid-column: 1/2;
+    grid-row: 2/3
+}
+
+.read, .delete {
+    justify-self: flex-end;
+    align-self:center;
 }
 
 .add-content.bottom {
@@ -111,4 +124,8 @@ main {
 footer {
     background-color: var(--dark-purple);
     height: 2rem;
+}
+
+.icon {
+    height: 2rem
 }
