@@ -91,13 +91,23 @@ main {
 
 .add-content.bottom {
     height: 10vh;
-    border: solid 2px var(--dark-purple);
+    border: solid 3px var(--dark-purple);
+    
     width: 100%;
     border-radius: 16px;
     background: none;
     font-size: 32px;
     font-weight: bolder;
+    background-color: var(--medium-purple);
     color: var(--light-purple);
+    position: sticky;
+    bottom: 10px;
+}
+
+.add-content.bottom:hover {
+    background-color: var(--dark-purple);
+    color: var(--light-purple);
+    font-size: 42px;
 }
 
 .quote {

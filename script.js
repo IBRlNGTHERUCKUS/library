@@ -34,7 +34,7 @@ const bookList = {
         else {
             bookRead.setAttribute('src', './images/icons/book-open.svg');
         }
-        // Icon hover behavior
+        // Icon hover behavior (somewhat confusing on desktop when you click and stay hovered)
         bookRead.addEventListener('mouseover', ()=> {
             if (book.read) {
                 bookRead.setAttribute('src', './images/icons/book-open.svg')
