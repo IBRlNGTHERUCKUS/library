@@ -97,4 +97,10 @@ bookList.books[0].toggleRead();
 console.log(bookList);
 
 bookList.renderBooks();
-bookList.
+
+const overlay = document.querySelector(".overlay-bg");
+const closeButton = document.querySelector(".close-button");     
+const addContent = document.querySelector(".add-content");
+addContent.addEventListener("click", ()=>{overlay.classList.toggle("hidden")});
+closeButton.addEventListener("click", 
+    ()=>{overlay.classList.toggle("hidden")});

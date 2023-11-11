@@ -144,6 +144,10 @@ footer {
     place-items: center
 }
 
+.hidden {
+    display: none;
+}
+
 .overlay-form {
     width: min(80%, 700px) ;
 
