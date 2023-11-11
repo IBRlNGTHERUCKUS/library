@@ -23,7 +23,7 @@ const bookList = {
         bookTitle.textContent = book.title;
         let bookAuthor = document.createElement('h3');
         bookAuthor.classList.add("author");
-        bookAuthor.textContent = book.author;
+        bookAuthor.textContent = `by ${book.author}`;
         // Read and Delete buttons
         let bookRead = document.createElement('input');
         bookRead.setAttribute('type', 'image');
@@ -52,10 +52,9 @@ const bookList = {
             }
         });
         bookRead.addEventListener('click', (e)=> {
-            if (!book.read) {
-                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg');
-            }
             this.books[e.target.parentNode.dataset.index].toggleRead();
+            this.clearBooks();
+            this.renderBooks();
         })
         
         let bookDelete = document.createElement('input');
@@ -87,11 +86,11 @@ Book.prototype.toggleRead = function() {
     this.read ? this.read = false : this.read = true;
 }
 
-bookList.addBook("Book 0", "Joe Farias", true);
-bookList.addBook("Book 1", "Joe Farias", true);
-bookList.addBook("Book 2", "Joe Farias", false);
-bookList.addBook("Book 3", "Joe Farias", true);
-bookList.addBook("Book 4", "Joe Farias", true);
+bookList.addBook("The Lord of the Rings", "J. R. R. Tolkien", true);
+bookList.addBook("A Tale of Two Cities", "Charles Dickens", true);
+bookList.addBook("Harry Potter and the Philosopher's Stone", "J. K. Rowling", false);
+bookList.addBook("And Then There Were None", "Agatha Christie", true);
+bookList.addBook("The Da Vinci Code", "	Dan Brown", true);
 bookList.books[3].toggleRead();
 console.log(bookList);
 bookList.books[0].toggleRead();

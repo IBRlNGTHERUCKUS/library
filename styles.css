@@ -1,5 +1,6 @@
-* {
-    
+@font-face {
+    font-family: Roboto;
+    src: url(./fonts/Roboto-Thin.ttf);
 }
 
 :root {
@@ -17,19 +18,21 @@ body {
     margin: 0px;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 20vh 1fr auto;
+    grid-template-rows: auto 1fr auto;
     font-family: Roboto;
 }
 
+h1 {
+    color: white;
+    font-weight: bolder;
+}
+
 header {
-    background: url(./images/bookshelf-bg.png);
-    background: none;
     background-color: var(--darker-purple);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 12px;
 }
 
 main {
@@ -56,8 +59,10 @@ main {
     row-gap: 10px;
     color: white;
     border: solid 2px var(--dark-purple);
-    border-left: solid 60px var(--medium-purple);
-    
+    border-left: solid 60px var(--light-purple);
+}
+.book:nth-child(even) {
+    border-left: solid 60px paleturquoise;
 }
 
 .title {
@@ -70,6 +75,7 @@ main {
 
 .author { 
     text-align: center;
+    font-style: italic;
     align-self: flex-start;
     justify-self: center;
     width: fit-content;
@@ -91,6 +97,7 @@ main {
     background: none;
     font-size: 32px;
     font-weight: bolder;
+    color: var(--light-purple);
 }
 
 .quote {
@@ -109,4 +116,8 @@ footer {
 
 .icon {
     height: 2rem
+}
+
+.logo {
+    height: 70px;
 }
