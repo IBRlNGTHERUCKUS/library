@@ -172,7 +172,7 @@ footer {
      display: flex;
      justify-content: space-between; 
      background-color: var(--medium-purple);
-}
+} 
 
 .button-box button {
     height: 30px;

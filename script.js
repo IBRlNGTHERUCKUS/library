@@ -74,7 +74,7 @@ const bookList = {
         bookContainer.appendChild(bookDiv);
         }
     } 
-}
+} 
 
 
 function Book(title, author, read = false) {
