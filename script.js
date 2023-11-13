@@ -27,55 +27,46 @@ const bookList = {
         let bookAuthor = document.createElement('h3');
         bookAuthor.classList.add("author");
         bookAuthor.textContent = `by ${book.author}`;
-        // Read and Delete buttons
+        //Create read button
         let bookRead = document.createElement('input');
         bookRead.setAttribute('type', 'image');
         bookRead.classList.add('icon', 'read');
-        if (book.read) {
-            bookRead.setAttribute('src', './images/icons/check-bold-gn.svg');
-        }
-        else {
-            bookRead.setAttribute('src', './images/icons/book-open.svg');
-        }
-        // Icon hover behavior (somewhat confusing on desktop when you click and stay hovered)
-        bookRead.addEventListener('mouseover', ()=> {
-            if (book.read) {
-                bookRead.setAttribute('src', './images/icons/book-open.svg')
-            }
-            else {
-                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg')
-            }
-        })
-        bookRead.addEventListener('mouseout', ()=> {
-            if (book.read) {
-                bookRead.setAttribute('src', './images/icons/check-bold-gn.svg')
-            }
-            else {
-                bookRead.setAttribute('src', './images/icons/book-open.svg')
-            }
-        });
+        //Add appropriate icon if book has been read
+        bookRead.setAttribute(
+            'src', 
+            book.read ? './images/icons/check-bold-gn.svg' : './images/icons/book-open.svg');
+        
         bookRead.addEventListener('click', (e)=> {
             this.books[e.target.parentNode.dataset.index].toggleRead();
             this.clearBooks();
             this.renderBooks();
         })
-        
+        //Create delete button
         let bookDelete = document.createElement('input');
         bookDelete.setAttribute('type', 'image');
         bookDelete.classList.add('icon', 'delete');
         bookDelete.setAttribute('src', "./images/icons/delete-outline.svg");
-        bookDelete.addEventListener('mouseover', ()=> {bookDelete.setAttribute('src', './images/icons/delete-outline-rd.svg')})
-        bookDelete.addEventListener('mouseout', ()=> {bookDelete.setAttribute('src', './images/icons/delete-outline.svg')})
-        bookDelete.addEventListener('click', (e)=>{
-            this.books.splice(e.target.parentNode.dataset.index, 1);
-            this.clearBooks();
-            this.renderBooks();
-        })
+        bookDelete.addEventListener('click', this.handleBookDelete);
+
+        
 
         bookDiv.append(bookTitle, bookAuthor, bookRead, bookDelete);
         bookContainer.appendChild(bookDiv);
         }
-    } 
+    },
+    handleBookDelete:function(e) {
+        const targetBook = e.target.parentNode;
+        const targetBookIndex = targetBook.dataset.index;
+        bookList.books.splice(targetBookIndex, 1);
+        // Animate book to collapse when deleted
+        targetBook.style.maxHeight=0;
+        targetBook.style.padding=0;
+        setTimeout(
+            ()=>{
+                bookList.clearBooks();
+                bookList.renderBooks();
+            }, 200);
+    }
 } 
 
 
@@ -115,6 +106,7 @@ function handleCreateEntry(event) {
     const newAuthor = document.querySelector("#newAuthor");
     const newRead = document.querySelector("#newRead");
     bookList.addBook(newTitle.value, newAuthor.value, newRead.checked);
+    bookList.clearBooks();
     bookList.renderBooks();
     //Reset values
     newTitle.value=null;
