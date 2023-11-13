@@ -25,16 +25,16 @@
     <div class="quote">“Books are the plane, and the train, and the road. They are the destination, and the journey. They are home.” ― Anna Quindlen</div>
     <footer></footer>
     <div class="overlay-bg hidden">
-        <form class="overlay-form">
+        <form class="overlay-form" action="http://httpbin.org/post" method="post">
             <h2>Complete this form to add a book to your collection!</h2>
             <div class="input-grid">
                 <label for="newTitle">Title: </label>
-                <input type="text" id="newTitle">
+                <input type="text" id="newTitle" name="newTitle" required>
                 <label for="newAuthor">Author: </label>
-                <input type="text" id="newAuthor">
+                <input type="text" id="newAuthor" name="newAuthor" required>
                 <div class="input-row">
                     <label for="newRead">I have already read this book. </label>
-                    <input type="checkbox" id="newRead">
+                    <input type="checkbox" id="newRead" name="newRead" value="read">
                 </div>
             </div>
             <div class="button-box">  

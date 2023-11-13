@@ -1,4 +1,6 @@
 const bookContainer = document.querySelector(".book-container");
+const overlayBg = document.querySelector(".overlay-bg");
+const overlayForm = document.querySelector(".overlay-form");
 
 const bookList = {
     books: [],
@@ -105,3 +107,20 @@ const addContent = document.querySelector(".add-content");
 addContent.addEventListener("click", ()=>{overlay.classList.toggle("hidden")});
 closeButton.addEventListener("click", 
     ()=>{overlay.classList.toggle("hidden")});
+
+function handleCreateEntry(event) {
+    // Prevent form submission
+    event.preventDefault();
+    const newTitle = document.querySelector("#newTitle");
+    const newAuthor = document.querySelector("#newAuthor");
+    const newRead = document.querySelector("#newRead");
+    bookList.addBook(newTitle.value, newAuthor.value, newRead.checked);
+    bookList.renderBooks();
+    //Reset values
+    newTitle.value=null;
+    newAuthor.value=null;
+    newRead.checked=false;
+    overlayBg.classList.toggle('hidden');
+}
+
+overlayForm.addEventListener('submit', handleCreateEntry);
