@@ -16,6 +16,7 @@ const bookList = {
         
         let bookDiv = document.createElement('div');
         bookDiv.classList.add("book");
+        //data-index corresponds with books array index
         bookDiv.setAttribute('data-index', i++);
 
         let bookTitle = document.createElement('h2');

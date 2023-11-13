@@ -160,6 +160,7 @@ footer {
     display: grid;
     grid: auto auto/auto auto;
     gap: 8px;
+    padding: 8px;
 }
 
 .input-box h2 {
@@ -173,6 +174,10 @@ footer {
      background-color: var(--medium-purple);
 }
 
-.input-box, .button-box {
-    padding: 8px;
+.button-box button {
+    height: 30px;
+    border-right: solid white 2px;
+    flex: 1;
+    background: none;
+    color: var(--light-purple);
 }
