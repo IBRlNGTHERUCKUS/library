@@ -109,7 +109,6 @@ main {
 .add-content.bottom:hover {
     background-color: var(--dark-purple);
     color: var(--light-purple);
-    font-size: 42px;
 }
 
 .quote {
@@ -140,6 +139,7 @@ footer {
     top: 0; 
     height: 100vh;
     width: 100%;  
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: grid;
     place-items: center
@@ -151,33 +151,57 @@ footer {
 
 .overlay-form {
     width: min(80%, 700px) ;
-
+    background-color: white;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px
 }
 
-.input-box {
-    background-color: white;
+.input-grid { 
     color: black;
     display: grid;
     grid: auto auto/auto auto;
     gap: 8px;
-    padding: 8px;
 }
 
-.input-box h2 {
-    color: black;
+.input-grid label {
+    font-size: 1.2rem;
+    justify-self: end;
+}
+
+.input-row {
     grid-column: 1/3;
+    justify-self: center;
+}
+
+.overlay-form h2 {
+    color: black;
+}
+
+input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+input[type='text'] {
+    min-width: 0;
 }
 
 .button-box {   
      display: flex;
+     width: 100%; 
+     gap: 8px;
      justify-content: space-between; 
-     background-color: var(--medium-purple);
 } 
 
 .button-box button {
     height: 30px;
-    border-right: solid white 2px;
+    border: none;
+    font-size: 1.2rem;
     flex: 1;
-    background: none;
-    color: var(--light-purple);
+    background-color: var(--medium-purple);
+    color: white;
 }
