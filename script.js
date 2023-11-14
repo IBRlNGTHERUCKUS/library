@@ -4,8 +4,8 @@ const overlayForm = document.querySelector(".overlay-form");
 
 const bookList = {
     books: [],
-    addBook: function (title, author, read = false) {
-        this.books.push(new Book(title, author, read));
+    addBook: function (title, author, read = false, imageURL) {
+        this.books.push(new Book(title, author, read, imageURL));
     },
     clearBooks: function() {
         while (bookContainer.hasChildNodes()){
@@ -20,6 +20,14 @@ const bookList = {
         bookDiv.classList.add("book");
         //data-index corresponds with books array index
         bookDiv.setAttribute('data-index', i++);
+        
+        //Add a picture of the book cover if url is      provided
+        if(book.imageURL) { 
+        let bookImage = document.createElement("img");
+        bookImage.setAttribute("src", book.imageURL);
+        bookImage.classList.add("book-image");
+        bookDiv.appendChild(bookImage);
+        }
 
         let bookTitle = document.createElement('h2');
         bookTitle.classList.add("title");
@@ -70,21 +78,22 @@ const bookList = {
 } 
 
 
-function Book(title, author, read = false) {
+function Book(title, author, read = false, imageURL) {
     this.title = title;
     this.author = author;
     this.read = read;
+    this.imageURL = imageURL;
 }
 
 Book.prototype.toggleRead = function() {
     this.read ? this.read = false : this.read = true;
 }
 
-bookList.addBook("The Lord of the Rings", "J. R. R. Tolkien", true);
-bookList.addBook("A Tale of Two Cities", "Charles Dickens", true);
-bookList.addBook("Harry Potter and the Philosopher's Stone", "J. K. Rowling", false);
-bookList.addBook("And Then There Were None", "Agatha Christie", true);
-bookList.addBook("The Da Vinci Code", "	Dan Brown", true);
+bookList.addBook("The Lord of the Rings", "J. R. R. Tolkien", true, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1566425108l/33.jpg");
+bookList.addBook("A Tale of Two Cities", "Charles Dickens", true, "https://prodimage.images-bn.com/pimages/9781411433236_p0_v2_s1200x630.jpg");
+bookList.addBook("Harry Potter and the Philosopher's Stone", "J. K. Rowling", false, "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg");
+bookList.addBook("And Then There Were None", "Agatha Christie", true, "https://m.media-amazon.com/images/I/81B9LhCS2AL._AC_UF1000,1000_QL80_.jpg");
+bookList.addBook("The Da Vinci Code", "	Dan Brown", true, "https://m.media-amazon.com/images/I/91Q5dCjc2KL._AC_UF1000,1000_QL80_.jpg");
 bookList.books[3].toggleRead();
 console.log(bookList);
 bookList.books[0].toggleRead();
@@ -92,6 +101,7 @@ console.log(bookList);
 
 bookList.renderBooks();
 
+//Overlay for creating new entries
 const overlay = document.querySelector(".overlay-bg");
 const closeButton = document.querySelector(".close-button");     
 const addContent = document.querySelector(".add-content");
